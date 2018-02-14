@@ -21,6 +21,7 @@
   "dependencies": {
     "expo": "^25.0.0",
     "firebase": "^4.4.0",
+    "firebase-admin": "^5.8.2",
     "firebase-tools": "^3.17.4",
     "react": "16.2.0",
     "react-native": "0.52.0",
