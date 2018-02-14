@@ -5,11 +5,11 @@ import { FormLabel, FormInput } from 'react-native-elements';
 export default class App extends React.Component {
   render() {
     return (
-      <Container style={styles.container}>
+      <View style={styles.container}>
         <FormLabel>Name</FormLabel>
         <FormInput onChangeText={someFunction}/>
         <FormValidationMessage>Error message</FormValidationMessage>
-      </Container>   
+      </View>   
     );
   }
 }
