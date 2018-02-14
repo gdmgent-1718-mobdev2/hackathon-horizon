@@ -4,7 +4,7 @@
       "id": 0,
       "lastModifiedDate": "2018-02-14T12:58:15.673Z",
       "name": "Bourgoyen-Ossemeersen",
-      "description": "Stedelijk Natuurreservaat Bourgoyen-Ossemeersen",
+      "description": "De Bourgoyen-Ossemeersen is vooral bekend door de grote aantallen watervogels in het winterhalfjaar. Die vogels worden aangetrokken door de overstroomde graslanden. Opvallend zijn de verschillende soorten eenden:  smienten, wintertalingen en slobeenden zijn het  talirijkst.  Kleinere aantallen van pijlstaart, krakeend, bergeend, kuifeend en tafeleend vervolledigen het rijtje. Ook prominent aanwezig: de ganzen. De grootste groepen vormen Canadese ganzen en brandganzen, beide van exotische oorsprong. Daarnaast zijn er ook nog veel steltlopers te zien: kieviten, wulpen, kemphanen en watersnippen. De meeste eenden, kieviten en watersnippen verlaten in de schemering de Bourgoyen-Ossemeersen om 's nachts te gaan voedsel zoeken in de Leievallei. Omgekeerd zijn er ook vogels die de Bourgoyen-Ossemeersen opzoeken om er te komen slapen:  meeuwen, ganzen, wulp en kemphaan.",
       "latitude": 51.061009, 
       "longitude": 3.673738,
       "address": "Valkhuisweg \n9000 Gent",
@@ -12,33 +12,238 @@
         "id": 1004,
         "name": "Gent"
       },
-      "playground": false
+      "playground": false,
+      "image": "<img src=\"https://visit.gent.be/sites/default/files/images-spot/bourgoyen-ossemeersen_3.jpg\">",
     },
     {
       "id": 1,
       "lastModifiedDate": "2018-02-14T12:58:15.673Z",
-      "name": "Bourgoyen-Ossemeersen",
-      "description": "Stedelijk Natuurreservaat Bourgoyen-Ossemeersen",
+      "name": "Citadelpark",
+      "description": "Het park is genoemd naar de grootse citadel die na de val van Napoleon op deze plek werd gebouwd. Die moest echter plaatsruimen toen het park als onderdeel van de Wereldtentoonstelling in 1913 werd aangelegd.
+      Vandaag kun je extra genieten van de botanische rijkdom dankzij het naamzuiltje dat alle bijzondere bomen sinds 2005 flankeert.",
       "latitude": 51.037881,
       "longitude": 3.720205, 
-      "address": "Valkhuisweg \n9000 Gent",
+      "address": "Citadelpark \n9000 Gent",
       "city": {
         "id": 1004,
         "name": "Gent"
       },
-      "playground": false
+      "playground": true,
+      "image":"<img src=\"https://stad.gent/sites/default/files/styles/sidebar_full_width/public/parks_playgrounds/Citadelpark.jpg\">"
     },
     {
       "id": 2,
       "lastModifiedDate": "2018-02-14T12:58:15.673Z",
-      "name": "Bourgoyen-Ossemeersen",
-      "description": "Stedelijk Natuurreservaat Bourgoyen-Ossemeersen",
-      "latitude": 51.061009, 
-      "longitude": 3.673738,
-      "address": "Valkhuisweg \n9000 Gent",
+      "name": "Blaarmeersen - Watersportbaan",
+      "description": "Het Sport- en Recreatiepark Blaarmeersen is een groene parel aan de Gentse Watersportbaan. Vlak bij het historisch stadscentrum van Gent en goed bereikbaar vanuit alle uithoeken van Vlaanderen, is dit park een oase van rust en een baken van sportiviteit. Met zijn grote vijver en ontelbare sport- en recreatiemogelijkheden staat de Blaarmeersen garant voor puur plezier.
+
+      En dat is niet alles! Een sportdag organiseren, een kajaktocht houden, genieten van een lichte lunch op het terras na een dagje sporten of enkele dagen onbezorgd kamperen? Het kan allemaal. Laat u verleiden door de troeven van de Blaarmeersen, het hele jaar door.",
+      "latitude": 51.046596,
+      "longitude": 3.685633,
+      "address": "Zuiderlaan \n9000 Gent",
       "city": {
         "id": 1004,
         "name": "Gent"
       },
-      "playground": false
+      "playground": true,
+      "image":"<img src=\"https://stad.gent/sites/default/files/styles/sidebar_full_width/public/article/images/blaarmeersen%203_0.jpg\">"
     },
+    {
+      "id": 3,
+      "lastModifiedDate": "2018-02-14T12:58:15.673Z",
+      "name": "Groenevalleipark",
+      "description": "Het grootste en meest avontuurlijke park van de wijk, om te spelen, te wandelen, te picknicken en te sporten.
+
+      Helemaal in het zuiden van de Brugse Poort, tussen de Nieuwewandeling en de Leie, ligt het Groenevalleipark. Het wijkpark is maar liefst zes hectare groot en bevindt zich op de plek waar vroeger de gebouwen van textielfabriek La Lys stonden. Het is een avontuurlijk park, met speeltuinen en heel veel houten palen, trappen en andere speelelementen.",
+      "latitude": 51.055379,
+      "longitude": 3.704411,
+      "address": "Nieuwewandeling \n9000 Gent",
+      "city": {
+        "id": 1004,
+        "name": "Gent"
+      },
+      "playground": true,
+      "image":"<img src=\"https://stad.gent/sites/default/files/styles/sidebar_500/public/page/images/LIESBETH%20GV.jpg\">"
+    },
+    {
+      "id": 4,
+      "lastModifiedDate": "2018-02-14T12:58:15.673Z",
+      "name": "Maaltebruggepark",
+      "description": "Het Maaltebruggepark heeft een totale oppervlakte van 10,5 hectare. Dat maakt het één van de grotere parken in Gent. Het ontstond als private tuin bij het Maaltebruggekasteel, dat dateert van 1754. In 1860 wordt het domein eigendom van Jozef de Hemptinne, een bekend Gents textielnijveraar. Hij sticht in 1866 naast het park een tehuis voor wezen en verwaarloosde jongeren, het latere Don Bosco-instituut. Later laat zijn zoon Paul de Hemptinne de neogotische vleugel aan het kasteel bijbouwen.",
+      "latitude": 51.020980,
+      "longitude": 3.702596,
+      "address": "Maaltebruggepark \n9000 Gent",
+      "city": {
+        "id": 1004,
+        "name": "Gent"
+      },
+      "playground": true,
+      "image":"<img src=\"http://beeldbank.stad.gent/GENT/a26768299ab646f2b36d69dc1c187dd9c06f0b09d0184a3f816d9c0fd896f1f7/browse.jpg\">"
+    },
+    {
+      "id": 5,
+      "lastModifiedDate": "2018-02-14T12:58:15.673Z",
+      "name": "Paul de Smet de Naeyerpark",
+      "description": "Blikvanger in het park is nog steeds het beeld van het Ros Beiaard. Beeldhouwers Alois De Beule en Domien Ingels tekenden voor het ontwerp. Het beeld woog zo zwaar dat het na de wereldtentoonstelling niet meer verplaatst kon worden. Het bleef ter plaatse staan. ",
+      "latitude": 51.031596,
+      "longitude": 3.718414,
+      "address": "Paul de Smet de Naeyerplein \n9000 Gent",
+      "city": {
+        "id": 1004,
+        "name": "Gent"
+      },
+      "playground": false,
+      "image":"<img src=\"https://stad.gent/sites/default/files/styles/sidebar_full_width/public/parks_playgrounds/Paul%20de%20Smet%20de%20Naeyerpark1_1.jpg\">"
+    },
+    {
+      "id": 6,
+      "lastModifiedDate": "2018-02-14T12:58:15.673Z",
+      "name": "Park De Vijvers",
+      "description": "Met zijn bijna vijf hectare vormt het Park De Vijvers een groene long in Ledeberg.
+
+      Langs de De Naeyerdreef staat nog het voormalige poortgebouw van het kasteel. Nu heeft de jeugdbeweging KSJ er haar lokalen. Het poortgebouw geeft toegang tot een eiland, waarop vroeger het kasteel stond. Rondom dat eiland ligt nog de brede slotgracht. Verder bestaat het park vooral uit bos en een ruim grasveld met speelterrein.",
+      "latitude": 51.035261,
+      "longitude": 3.750856,
+      "address": "De Naeyerdreef \n9000 Gent",
+      "city": {
+        "id": 1004,
+        "name": "Gent"
+      },
+      "playground": true,
+      "image":"<img src=\"http://beeldbank.stad.gent/GENT/e338151aa85e4e07a70a44181e0d474068170d3dc091451d92e84059ebd76f29/browse.jpg\">"
+    },
+    {
+      "id": 7,
+      "lastModifiedDate": "2018-02-14T12:58:15.673Z",
+      "name": "Park de Pélichy",
+      "description": "Het omgeeft Kasteel de Pélichy, aan de Oude Brusselseweg. Het kasteel is opgetrokken in neoclassicistische stijl in 1883. Het kasteel was eerst een woonhuis voor een gegoede familie, later werd het aangekocht door het gemeentebestuur van Gentbrugge. Sinds enkele tijd is het opnieuw in privé-bezit. Het park bleef in handen van de Stad en blijft dus ook toegankelijk voor de buurt. 
+
+      Het park is schaduwrijk door de hoge bomen. Er staan onder andere eikenbomen en kastanjebomen. Er is ook een vijver",
+      "latitude": 51.037919,
+      "longitude": 3.754987,
+      "address": "Oude Brusselseweg \n9000 Gent",
+      "city": {
+        "id": 1004,
+        "name": "Gent"
+      },
+      "playground": false,
+      "image":"<img src=\"https://stad.gent/sites/default/files/styles/sidebar_full_width/public/parks_playgrounds/ParkdePelichy2.jpg\">"
+    },
+    {
+      "id": 8,
+      "lastModifiedDate": "2018-02-14T12:58:15.673Z",
+      "name": "Rommelwaterpark",
+      "description": "Het Rommelwaterpark ligt in de Machariuswijk. Het is gelegen tussen de Ossenstraat en de Kasteellaan. Het buurtpark werd in 1997 aangelegd. Het was het eerste park in Gent dat met inspraak van de buurtbewoners tot stand kwam.
+      Het park grenst aan de tuinen van de omliggende straten. Het is een plek waar buurtbewoners elkaar ontmoeten en buurtkinderen spelen.",
+      "latitude": 51.051631,
+      "longitude": 3.739954,
+      "address": "Rommelwaterpark \n9000 Gent",
+      "city": {
+        "id": 1004,
+        "name": "Gent"
+      },
+      "playground": true,
+      "image":"<img src=\"https://stad.gent/sites/default/files/styles/sidebar_full_width/public/parks_playgrounds/Rommelwaterpark.jpg\">"
+    },
+    {
+      "id": 9,
+      "lastModifiedDate": "2018-02-14T12:58:15.673Z",
+      "name": "Rabotpark",
+      "description": "Na de bouw van het gerechtsgebouw en het jongerenontmoetingscentrum langs de Opgeëistenlaan begon de aanleg van het Rabotpark. De Parijse landschapsarchitect Michel Desvigne maakte het ontwerp. Gaandeweg voegde de Stad Gent speeltoestellen en sportvelden toe.
+
+      Begin 2017 breidde het Rabotpark verder uit tot voorbij de tram- en fietbrug.Later komt er nog een stuk bij naast de gashouders. Het Rabotpark wordt uiteindelijk een wijkpark van 5 hectare groot.",
+      "latitude": 51.063924,
+      "longitude": 3.716127,
+      "address": "Rabotpark \n9000 Gent",
+      "city": {
+        "id": 1004,
+        "name": "Gent"
+      },
+      "playground": true,
+      "image":"<img src=\"https://stad.gent/sites/default/files/styles/sidebar_full_width/public/parks_playgrounds/Rabotpark.jpg\">"
+    },
+    {
+      "id": 10,
+      "lastModifiedDate": "2018-02-14T12:58:15.673Z",
+      "name": "Sit-Baafskouterspark",
+      "description": "Het park kreeg een nieuwe invulling als prettige wildernis met aandacht voor historische elementen. Zo werd bijvoorbeeld de walgracht van de oude ‘motte’ van Herleghem opnieuw zichtbaar gemaakt. Ook de ‘Crieckerie’ of kriekenboomgaard is in ere hersteld met de aanplant van zoete kers. Van de volkstuinen bleven de oude ligusterhagen over.
+
+      Bij de inrichting van het park werd in belangrijke mate rekening gehouden met de ideeën van buurtbewoners en -verenigingen. Er werd bewust gekozen voor het concept van een wild park dat uitnodigt tot ontdekking en avontuur. ",
+      "latitude": 51.056516,
+      "longitude": 3.758902,
+      "address": "Duivestaartstraat \n9000 Gent",
+      "city": {
+        "id": 1004,
+        "name": "Gent"
+      },
+      "playground": true,
+      "image":"<img src=\"https://stad.gent/sites/default/files/styles/sidebar_full_width/public/parks_playgrounds/Sint-Baafskouterpark.jpg\">"
+    },
+    {
+      "id": 11,
+      "lastModifiedDate": "2018-02-14T12:58:15.673Z",
+      "name": "Paul van Tieghem de ten Berghepark",
+      "description": "Het Paul van Tieghem de ten Berghepark is +/- 3,6 hectare groot. Het park dankt zijn naam aan de man die het kasteel liet bouwen, waarin nu het dienstencentrum van Mariakerke huist.
+
+      In 1889 besliste Paul van Tieghem de ten Berghe het vorige kasteel te vervangen door een neogotische nieuwbouw. Die gaf hij de naam “Les Muguets” (de meiklokjes). De familie de ten Berghe woonde erin tot de Duitsers in 1917 het domein bezetten.",
+      "latitude": 51.078536, 
+      "longitude": 3.679568,
+      "address": "Paul van Tieghemlaan \n9030 Gent",
+      "city": {
+        "id": 1004,
+        "name": "Gent"
+      },
+      "playground": false,
+      "image":"<img src=\"https://stad.gent/sites/default/files/styles/sidebar_full_width/public/page/images/preview_028%20Paul%20Van%20Tieghem%20de%20ten%20Berghepark%20%282%29.jpg_0.jpg\">"
+    },
+    {
+      "id": 12,
+      "lastModifiedDate": "2018-02-14T12:58:15.673Z",
+      "name": "Park La Sapinière",
+      "description": "De naam verwijst naar de vele ‘sapins’ of dennen die er zijn aangeplant. Begin vorige eeuw woonde hier een industrieel, die er een fabriekje uitbaatte. Vanaf 1997 nam de schuttersgilde Sint-Sebastiaan zijn intrek in de villa.
+
+      Naast La Sapinière wordt nu een het woonproject ‘De Zeemanstuin’ aangelegd. La Sapinière sluit aan op het Cirkelspark binnen deze wijk en vormt daarmee een park van +/- 7 ha groot. La Sapinière kreeg een nieuw wandelcircuit en nieuwe speelterreinen.",
+      "latitude": 51.072790,
+      "longitude": 3.750333,
+      "address": "Sint-Bernadettestraat \n9000 Gent",
+      "city": {
+        "id": 1004,
+        "name": "Gent"
+      },
+      "playground": true,
+      "image":"<img src=\"https://stad.gent/sites/default/files/styles/sidebar_full_width/public/parks_playgrounds/La%20Sapiniere.jpg\">"
+    },
+    {
+      "id": 13,
+      "lastModifiedDate": "2018-02-14T12:58:15.673Z",
+      "name": "Tolhuispark",
+      "description": "Park gelegen aan Sporthal Tolhuis",
+      "latitude": 51.063936,
+      "longitude": 3.724940,
+      "address": "Tolhuislaan \n9000 Gent",
+      "city": {
+        "id": 1004,
+        "name": "Gent"
+      },
+      "playground": true,
+      "image":"<img src=\"http://s1.nieuwsbladcdn.be/Assets/Images_Upload/2015/04/26/11f20fac-ec1d-11e4-8d12-eb24c88febbd_web_scale_0.0260417_0.0260417__.jpg?scale=both&format=jpg\">"
+    },
+    {
+      "id": 14,
+      "lastModifiedDate": "2018-02-14T12:58:15.673Z",
+      "name": "Azaleapark",
+      "description": "De naam van het park verwijst naar de historische bloementeelt in Gent. Het park ligt tussen de Achterstraat en de Azaleastraat.
+
+      Het park heeft een groot grasveld, een speeltuin met zandbak, een basketbalveld en er staan ook bomen. In het park vindt u Open Huis Azalea, een ontmoetingsplaats voor 55-plussers.",
+      "latitude": 51.060258, 
+      "longitude": 3.750553,
+      "address": "Azaleastraat \n9000 Gent",
+      "city": {
+        "id": 1004,
+        "name": "Gent"
+      },
+      "playground": true,
+      "image":"<img src=\"https://stad.gent/sites/default/files/styles/sidebar_full_width/public/parks_playgrounds/Azaleapark.jpg\">"
+    }
+  ]
+}
