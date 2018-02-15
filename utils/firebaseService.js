@@ -8,4 +8,3 @@ export function initializeFirebase() {
   }
   firebase.initializeApp(firebaseConfig);
 }
-

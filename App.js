@@ -1,53 +1,137 @@
 import React from 'react';
-import { StyleSheet, Text, View, ListView } from 'react-native';
-import { FormLabel, FormInput } from 'react-native-elements';
+import { StyleSheet, Text, View } from 'react-native';
+import { initializeFirebase, subscribeToTrack, listenFirebaseChanges } from './utils/firebaseService';
+import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base'
 import * as firebase from 'firebase';
-import firebaseConfig from './utils/firebaseConfig.json';
+//import { Provider } from 'react-redux';
+//import { createStore, applyMiddleware } from 'redux';
+//import AppReducer from './src/reducers';
 
-firebase.initializeApp(firebaseConfig);
+/*const store = createStore(
+  AppReducer,
+  applyMiddleware(middleware),
+);*/
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.state = {
-      dataSource: ds,
-    };
-    //'snapshot' maken van de data uit database
-    this.database = firebase.database();     
-    this.rootRef = firebase.database().ref();
-    this.ref = this.rootRef.child("parks");
-       
+
+  constructor(props){
+    super(props)
+    initializeFirebase();
+    
+    this.state = ({
+      email:'',
+      password:''
+    })
   }
 
-  listenForParks(ref) {
-    ref.on('value', (dataSnapshot) => {
-      var parks = [];
-      dataSnapshot.forEach((child) => {
-        parks.push(
-          child.val().name
-        );
-      });
-      console.warn(parks);
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(parks)
-      });
-    });
+  /*componentDidMount(){
+
+    firebase.auth().onAuthStateChanged((user)=> {
+      if (user != null) {
+        console.log(user)
+      }
+    }
+  )
+
+  }*/
+  
+  signUpUser = (email,password) =>{
+    try {
+      if (this.state.password.length<6) {
+        alert('please enter 6 characters')
+        return; 
+      }
+      
+      firebase.auth().createUserWithEmailAndPassword(email,password)
+      alert('je bent ingeschreven')
+
+    } catch (error) {
+      console.log(error.toString())
+    }
   }
-  componentDidMount() {
-    // start listening for firebase updates
-    this.listenForParks(this.ref);
+
+  loginUser = (email,password) =>{
+    try {
+      if (this.state.password.length<6) {
+        alert('please enter 6 characters')
+        return; 
+      }
+      
+      firebase.auth().signInWithEmailAndPassword(email,password).then(function (user){console.log(user)})
+      startFirebase(store);
+      alert('je bent ingelogd')
+
+    } catch (error) {
+      console.log(error.toString())
+    }
+  }
+
+  async loginWithFacebook(){
+
+    const{type,token}= await Expo.Facebook.logInWithReadPermissionsAsync
+    ('2100982780131676', { permissions:['public_profile']})
+
+    if (type == 'success') {
+      const credential = firebase.auth.FacebookAuthProvider.credential(token)
+      firebase.auth().signInWithCredential(credential).catch((error)=>{
+        console.log(error)
+      })
+    }
+
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <ListView
-        dataSource={this.state.dataSource}
-        renderRow={(rowData) => <Text>{rowData}</Text>}
-      />
-      </View> 
-    );
+      
+      <Container style={styles.container}>
+        <Form>
+          <Item floatingLabel>
+            <Label>E-mail</Label>
+            <Input 
+              autoCorrect = {false}
+              autoCapitalize="none"
+              onChangeText={(email)=> this.setState({email})}
+            />
+          </Item>
+          <Item floatingLabel>
+            <Label>Password</Label>
+            <Input 
+              secureTextEntry={true}
+              autoCorrect = {false}
+              autoCapitalize="none"
+              onChangeText={(password)=> this.setState({password})}
+            />
+          </Item>
+          <Button style={styles.button}
+            full
+            rounded
+            succes
+            onPress={()=> this.loginUser(this.state.email,this.state.password)}
+          >
+          <Text style={styles.buttonText}>Inloggen</Text>
+          </Button>
+          <Button style={styles.button}
+            full
+            rounded
+            primary
+            onPress={()=> this.signUpUser(this.state.email,this.state.password)}
+          >
+          <Text style={styles.buttonText}>Sign up</Text>
+          </Button>
+          <Button style={{marginTop: 20}}
+            full
+            rounded
+            primary
+            onPress={()=> this.loginWithFacebook()}
+          >
+          <Text>Facebook</Text>
+          </Button>
+        </Form>
+
+      </Container>
+
+
+  );
   }
 }
 
@@ -55,7 +139,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  button: {
+
+    backgroundColor: '#58BFA5',
+    justifyContent: 'center',
+    marginTop: 20,
+
+  },
+
+  buttonText: {
+
+    color: '#FFF',
+
+
   },
 });
