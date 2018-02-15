@@ -1,30 +1,32 @@
 import React,  { Component } from 'react';
 import { StyleSheet, Text, View, AppRegistry, Image } from 'react-native';
-import { initializeFirebase, subscribeToTrack, listenFirebaseChanges } from './utils/firebaseService';
-import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base'
 import * as firebase from 'firebase';
+import { initializeFirebase, subscribeToTrack, listenFirebaseChanges } from '../../utils/firebaseService';
 import { StackNavigator } from 'react-navigation';
-import { AppNavigator } from './src/navigators/AppNavigator';
+import { AppNavigator } from '../navigators/AppNavigator';
 
- 
-export default class App extends React.Component {
+class LandingScreen extends React.Component {
 
   constructor(props){
     super(props)
-    initializeFirebase();
     
-    this.state = ({
-      email:'',
-      password:''
-    })
   }
 
   render() {
     return (
-      <AppNavigator />
+      
+      <Container style={styles.container}>
+      <View>
+          <Text style={styles.buttonText}>Geland!</Text>
+      </View>
+      </Container>
+
+
   );
   }
 }
+
+export default LandingScreen
 
 const styles = StyleSheet.create({
   container: {
@@ -33,5 +35,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  
 });
+
