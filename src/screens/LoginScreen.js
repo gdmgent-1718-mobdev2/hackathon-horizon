@@ -59,9 +59,14 @@ class LoginScreen extends React.Component {
 
     if (type == 'success') {
       const credential = firebase.auth.FacebookAuthProvider.credential(token)
-      firebase.auth().signInWithCredential(credential).catch((error)=>{
+      firebase.auth().signInWithCredential(credential).then((firebaseUser) => {
+        //Success, move to homepage.
+        console.log("logged in!")
+        this.navigateTo("Landingscreen")
+      }).catch(function(error){
         console.log(error)
-      })
+        console.log(this.props)
+      });
     }
 
   }
@@ -105,13 +110,13 @@ class LoginScreen extends React.Component {
           >
           <Text style={styles.buttonText}>Inloggen</Text>
           </Button>
-          <Button style={styles.button}
+          <Button style={styles.buttonFacebook}
             full
             rounded
             primary
             onPress={()=> this.loginWithFacebook()}
           >
-          <Text>Facebook</Text>
+          <Text style={styles.buttonText}>Facebook</Text>
           </Button>
           <View style={styles.registerContainer}>
             <Text style={{ paddingTop:45}}>Nog geen account?</Text>
@@ -150,6 +155,15 @@ const styles = StyleSheet.create({
   button: {
 
     backgroundColor: '#58BFA5',
+    justifyContent: 'center',
+    marginTop: 20,
+    marginLeft: 20,
+    marginRight: 20,
+
+  },
+
+  buttonFacebook: {
+
     justifyContent: 'center',
     marginTop: 20,
     marginLeft: 20,
