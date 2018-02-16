@@ -12,6 +12,7 @@ class LoginScreen extends React.Component {
 
   constructor(props){
     super(props)
+    //fix
     this.navigateTo = this.navigateTo.bind(this);
     this.state = ({
       email:'',
@@ -34,7 +35,7 @@ class LoginScreen extends React.Component {
           return; 
         }
         
-        firebase.auth().signInWithEmailAndPassword(email,password).then(function(firebaseUser){
+        firebase.auth().signInWithEmailAndPassword(email,password).then((firebaseUser) => {
           //Success, move to homepage.
           console.log("logged in!")
           this.navigateTo("Landingscreen")
@@ -112,14 +113,15 @@ class LoginScreen extends React.Component {
           >
           <Text>Facebook</Text>
           </Button>
-          
-          <Text >Nog geen account?</Text>
-          <Button style={styles.link}
-            onPress={()=> this.navigateTo('registerScreen')}
-            title="registreer"
-          >
-          <Text >Registreer</Text>
-          </Button>
+          <View style={styles.registerContainer}>
+            <Text style={{ paddingTop:45}}>Nog geen account?</Text>
+            <Button style={styles.link}
+              onPress={()=> this.navigateTo('Register')}
+              title="registreer"
+            >
+            <Text style={{color: '#58BFA5'}}>Registreer</Text>
+            </Button>
+          </View>
         </Form>
 
       </Container>
@@ -136,6 +138,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     justifyContent: 'center',
+  },
+
+  registerContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection : 'row',
   },
 
   button: {
@@ -169,5 +178,11 @@ const styles = StyleSheet.create({
     marginLeft: "25%",
 
 
+  },
+
+  link: {
+
+    marginLeft: 10,
+    backgroundColor: 'transparent',
   },
 });
