@@ -6,54 +6,50 @@ import { initializeFirebase, subscribeToTrack, listenFirebaseChanges } from '../
 import { StackNavigator } from 'react-navigation';
 import { AppNavigator } from '../navigators/AppNavigator';
 
-class LandingScreen extends React.Component {
+class LeaderboardScreen extends React.Component {
 
   constructor(props){
-		super(props);
-		this.navigateTo = this.navigateTo.bind(this);
+    super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds,
     };
     //'snapshot' maken van de data uit database
-    this.database = firebase.database();     
+    this.database = firebase.database();
     this.rootRef = firebase.database().ref();
-    this.ref = this.rootRef.child("parks");
+    this.ref = this.rootRef.child("users");
        
   }
-	//assign props
-	navigateTo = (pageName)=> {
-		this.props.navigation.navigate(pageName)
-		console.log(this.props)
-	}
-  listenForParks(ref) {
+
+  listenForUsers(ref) {
     ref.on('value', (dataSnapshot) => {
-      let parks = [];
+      let users = [];
       dataSnapshot.forEach((child) => {
-        parks.push({
-          name: child.val().name,
-          img: child.val().image
+        users.push({
+          first_name: child.val().first_name,
+          last_name: child.val().last_name,
+          xp: child.val().xp,
+          img: child.val().profile_picture
         });
       });
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(parks),    
+        dataSource: this.state.dataSource.cloneWithRows(users),
       });
     });
   }
 
   componentDidMount() {
     // start listening for firebase updates
-    this.listenForParks(this.ref);
+    this.listenForUsers(this.ref);
   }
 
   render() {
-		const { navigation, screenProps } = this.props
     return (
       <View style={styles.container}>
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
-            placeholder="Kies een park..."
+            placeholder="Zoek een gebruiker..."
             underlineColorAndroid="transparent"
           />
           <Image style={styles.searchIcon} source={require('../images/searchIcon.png')} />
@@ -64,24 +60,17 @@ class LandingScreen extends React.Component {
           renderRow={(rowData) => 
             <View style={styles.listViewItem}>
               <Image source={{uri: rowData.img}} style={styles.img} />
-              <Text style={styles.name}><Text style={styles.bold}>{rowData.name}</Text> {"\n"} 120 m</Text>
-              <Text style={styles.xp}>150xp</Text>
+              <Text style={styles.name}><Text style={styles.bold}>{rowData.first_name}</Text> <Text style={styles.bold}>{rowData.last_name}</Text> {"\n"}35 badges</Text>
+              <Text style={styles.lvl}>lvl {Math.floor(rowData.xp / 100)}</Text>
               <Image style={styles.arrow} source={require('../images/arrowRight.png')} />
             </View>}
         />
-				<Button
-							style={styles.link}
-              onPress={()=> this.navigateTo('LeaderboardScreen')}
-              title="leaderboard"
-            >
-            <Text style={{color: '#58BFA5'}}>Leaderboard</Text>
-            </Button>
       </View> 
     );
   }
 }
 
-export default LandingScreen
+export default LeaderboardScreen
 
 const styles = StyleSheet.create({
   container: {
@@ -89,7 +78,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+	},
   inputContainer: {
     width: '90%',
     marginTop: 40,
@@ -99,7 +88,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     elevation: 2,
-
   },
   input: {
     width: '90%',
@@ -139,14 +127,9 @@ const styles = StyleSheet.create({
   bold: {
     fontWeight: 'bold'
   },
-  xp: {
-    backgroundColor: '#48CFAD',
-    paddingTop: 5,
-    paddingBottom: 5,
-    paddingLeft: 10,
-    paddingRight: 10,
-    borderRadius: 20,
-    color: '#FFF',
+  lvl: {
+    color: '#48CFAD',
+    paddingHorizontal: 10,
     fontSize: 11,
   },
   arrow: {
