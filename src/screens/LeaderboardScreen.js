@@ -5,6 +5,7 @@ import * as firebase from 'firebase';
 import { initializeFirebase, subscribeToTrack, listenFirebaseChanges } from '../../utils/firebaseService';
 import { StackNavigator } from 'react-navigation';
 import { AppNavigator } from '../navigators/AppNavigator';
+import SearchBar from '../components/SearchBar';
 
 class LeaderboardScreen extends React.Component {
 
@@ -17,12 +18,11 @@ class LeaderboardScreen extends React.Component {
     //'snapshot' maken van de data uit database
     this.database = firebase.database();
     this.rootRef = firebase.database().ref();
-    this.ref = this.rootRef.child("users");
-       
+		this.ref = this.rootRef.child("users");       
   }
 
   listenForUsers(ref) {
-    ref.on('value', (dataSnapshot) => {
+    ref.orderByChild('xp').on('value', (dataSnapshot) => {
       let users = [];
       dataSnapshot.forEach((child) => {
         users.push({
@@ -31,9 +31,10 @@ class LeaderboardScreen extends React.Component {
           xp: child.val().xp,
           img: child.val().profile_picture
         });
-      });
+			});
+			
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(users),
+        dataSource: this.state.dataSource.cloneWithRows(users.reverse()),
       });
     });
   }
@@ -46,21 +47,14 @@ class LeaderboardScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Zoek een gebruiker..."
-            underlineColorAndroid="transparent"
-          />
-          <Image style={styles.searchIcon} source={require('../images/searchIcon.png')} />
-        </View>  
+				<SearchBar />
         <ListView
           style={styles.listView}
-          dataSource={this.state.dataSource}
-          renderRow={(rowData) => 
+					dataSource={this.state.dataSource}
+          renderRow={(rowData, sectionID, rowID) => 
             <View style={styles.listViewItem}>
-              <Image source={{uri: rowData.img}} style={styles.img} />
-              <Text style={styles.name}><Text style={styles.bold}>{rowData.first_name}</Text> <Text style={styles.bold}>{rowData.last_name}</Text> {"\n"}35 badges</Text>
+							<Image source={{uri: rowData.img}} style={[styles.img, this.medal]} />
+              <Text style={styles.name}><Text style={styles.bold}>{rowData.first_name}</Text> <Text style={styles.bold}>{rowData.last_name}</Text> {"\n"}35 badges </Text>
               <Text style={styles.lvl}>lvl {Math.floor(rowData.xp / 100)}</Text>
               <Image style={styles.arrow} source={require('../images/arrowRight.png')} />
             </View>}
@@ -79,23 +73,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
 	},
-  inputContainer: {
-    width: '90%',
-    marginTop: 40,
-    padding: 10,
-    backgroundColor: '#FFF',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    elevation: 2,
-  },
-  input: {
-    width: '90%',
-  },
-  searchIcon: {
-    height: 15,
-    width: 15,
-  },
   listView: {
     width: '90%',
     marginTop: 20,
@@ -114,7 +91,18 @@ const styles = StyleSheet.create({
   img: {
     width: 60,
     height: 60,
-    borderRadius: 30,
+		borderRadius: 30,
+		borderColor: 'transparent',
+		borderWidth: 3
+	},
+	gold: {
+    borderColor: '#FFD700'
+	},
+	silver: {
+    borderColor: '#C0C0C0'
+	},
+	bronze: {
+    borderColor: '#CD7F32'
   },
   name: {
     fontWeight: 'normal',

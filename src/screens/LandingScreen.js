@@ -5,6 +5,7 @@ import * as firebase from 'firebase';
 import { initializeFirebase, subscribeToTrack, listenFirebaseChanges } from '../../utils/firebaseService';
 import { StackNavigator } from 'react-navigation';
 import { AppNavigator } from '../navigators/AppNavigator';
+import SearchBar from '../components/SearchBar';
 
 class LandingScreen extends React.Component {
 
@@ -50,14 +51,7 @@ class LandingScreen extends React.Component {
 		const { navigation, screenProps } = this.props
     return (
       <View style={styles.container}>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Kies een park..."
-            underlineColorAndroid="transparent"
-          />
-          <Image style={styles.searchIcon} source={require('../images/searchIcon.png')} />
-        </View>  
+        <SearchBar />  
         <ListView
           style={styles.listView}
           dataSource={this.state.dataSource}
