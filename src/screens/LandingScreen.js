@@ -1,5 +1,5 @@
 import React,  { Component } from 'react';
-import { StyleSheet, Text, View, AppRegistry, Image, ListView, TextInput } from 'react-native';
+import { StyleSheet, Text, View, AppRegistry, Image, ListView, TextInput, TouchableOpacity } from 'react-native';
 import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base'
 import * as firebase from 'firebase';
 import { initializeFirebase, subscribeToTrack, listenFirebaseChanges } from '../../utils/firebaseService';
@@ -14,6 +14,7 @@ class LandingScreen extends React.Component {
     this.state = {
       dataSource: ds,
     };
+    
     //'snapshot' maken van de data uit database
     this.database = firebase.database();     
     this.rootRef = firebase.database().ref();
@@ -27,7 +28,10 @@ class LandingScreen extends React.Component {
       dataSnapshot.forEach((child) => {
         parks.push({
           name: child.val().name,
-          img: child.val().image
+          img: child.val().image,
+          description: child.val().description,
+          lat: child.val().latitude,
+          lng: child.val().longitude,
         });
       });
       this.setState({
@@ -42,6 +46,7 @@ class LandingScreen extends React.Component {
   }
 
   render() {
+    const { navigation, screenProps } = this.props
     return (
       <View style={styles.container}>
         <View style={styles.inputContainer}>
@@ -55,17 +60,22 @@ class LandingScreen extends React.Component {
         <ListView
           style={styles.listView}
           dataSource={this.state.dataSource}
-          renderRow={(rowData) => 
-            <View style={styles.listViewItem}>
-              <Image source={{uri: rowData.img}} style={styles.img} />
-              <Text style={styles.name}><Text style={styles.bold}>{rowData.name}</Text> {"\n"} 120 m</Text>
-              <Text style={styles.xp}>150xp</Text>
-              <Image style={styles.arrow} source={require('../images/arrowRight.png')} />
-            </View>}
+          renderRow={(rowData) =>
+            <TouchableOpacity onPress={() => {screenProps.park = rowData, navigation.navigate('DetailScreen')}}> 
+              <View style={styles.listViewItem}>
+                <Image source={{uri: rowData.img}} style={styles.img} />
+                <Text style={styles.name}><Text style={styles.bold}>{rowData.name}</Text> {"\n"} 120 m</Text>
+                <Text style={styles.xp}>150xp</Text>
+                <Image style={styles.arrow} source={require('../images/arrowRight.png')} />
+              </View>
+            </TouchableOpacity>  
+            }
         />
       </View> 
     );
   }
+
+  
 }
 
 export default LandingScreen

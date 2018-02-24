@@ -5,10 +5,12 @@ import { AppRegistry } from 'react-native';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import LandingScreen from '../screens/LandingScreen';
+import DetailScreen from '../screens/DetailScreen';
 
 export const AppNavigator = StackNavigator({
+  LandingScreen: { screen: LandingScreen },
   LoginScreen: { screen: LoginScreen },
   Register: { screen: RegisterScreen },
-  Landingscreen: { screen: LandingScreen }
+  DetailScreen: { screen: DetailScreen }
   
 });

@@ -10,18 +10,32 @@ import { AppNavigator } from './src/navigators/AppNavigator';
 export default class App extends React.Component {
 
   constructor(props){
-    super(props)
+    super(props);
+    this.navigateTo = this.navigateTo.bind(this);
     initializeFirebase();
     
     this.state = ({
       email:'',
       password:''
     })
+    
+  }
+
+  //assign props
+  navigateTo = (pageName)=> {
+    this.props.navigation.navigate(pageName)
+    console.log(this.props)
   }
 
   render() {
+    const screenProps = {
+      park: {
+        name: 'TestPark',
+        img: 'TestImg',
+      },
+    }
     return (
-      <AppNavigator />
+      <AppNavigator screenProps={screenProps} />
   );
   }
 }
