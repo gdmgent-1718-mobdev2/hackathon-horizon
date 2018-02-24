@@ -5,11 +5,12 @@ import * as firebase from 'firebase';
 import { initializeFirebase, subscribeToTrack, listenFirebaseChanges } from '../../utils/firebaseService';
 import { StackNavigator } from 'react-navigation';
 import { AppNavigator } from '../navigators/AppNavigator';
+import SearchBar from '../components/SearchBar';
 
 class LandingScreen extends React.Component {
 
   constructor(props){
-    super(props);
+		super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds,
@@ -21,7 +22,6 @@ class LandingScreen extends React.Component {
     this.ref = this.rootRef.child("parks");
        
   }
-
   listenForParks(ref) {
     ref.on('value', (dataSnapshot) => {
       let parks = [];
@@ -49,14 +49,7 @@ class LandingScreen extends React.Component {
     const { navigation, screenProps } = this.props
     return (
       <View style={styles.container}>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Kies een park..."
-            underlineColorAndroid="transparent"
-          />
-          <Image style={styles.searchIcon} source={require('../images/searchIcon.png')} />
-        </View>  
+        <SearchBar />  
         <ListView
           style={styles.listView}
           dataSource={this.state.dataSource}
@@ -71,6 +64,13 @@ class LandingScreen extends React.Component {
             </TouchableOpacity>  
             }
         />
+				<Button
+							style={styles.link}
+              onPress={()=> navigation.navigate('LeaderboardScreen')}
+              title="leaderboard"
+            >
+            <Text style={{color: '#58BFA5'}}>Leaderboard</Text>
+            </Button>
       </View> 
     );
   }
