@@ -26,6 +26,7 @@ class RegisterScreen extends React.Component {
       
       firebase.auth().createUserWithEmailAndPassword(email,password)
       alert('je bent ingeschreven')
+      navigation.navigate('Landingscreen')
 
     } catch (error) {
       console.log(error.toString())

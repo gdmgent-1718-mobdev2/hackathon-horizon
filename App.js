@@ -11,7 +11,6 @@ export default class App extends React.Component {
 
   constructor(props){
     super(props);
-    this.navigateTo = this.navigateTo.bind(this);
     initializeFirebase();
     
     this.state = ({
@@ -21,17 +20,10 @@ export default class App extends React.Component {
     
   }
 
-  //assign props
-  navigateTo = (pageName)=> {
-    this.props.navigation.navigate(pageName)
-    console.log(this.props)
-  }
-
   render() {
     const screenProps = {
       park: {
         name: 'TestPark',
-        img: 'TestImg',
       },
     }
     return (

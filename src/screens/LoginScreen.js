@@ -12,8 +12,6 @@ class LoginScreen extends React.Component {
 
   constructor(props){
     super(props)
-    //fix
-    this.navigateTo = this.navigateTo.bind(this);
     this.state = ({
       email:'',
       password:''
@@ -34,7 +32,7 @@ class LoginScreen extends React.Component {
         firebase.auth().signInWithEmailAndPassword(email,password).then((firebaseUser) => {
           //Success, move to homepage.
           console.log("logged in!")
-          this.navigateTo("LandingScreen")
+          navigation.navigate('LandingScreen')
         }).catch(function(error){
           console.log(error)
           console.log(this.props)
