@@ -8,8 +8,7 @@ import { AppNavigator } from '../navigators/AppNavigator';
 
 class DetailScreen extends React.Component {
     constructor(props){
-    super(props);
-    
+    	super(props);
     }
 
     render() {
