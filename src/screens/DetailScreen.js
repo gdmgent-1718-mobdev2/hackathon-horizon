@@ -17,11 +17,18 @@ class DetailScreen extends React.Component {
             <View style={detail.container}>
                 <Image source={{uri: screenProps.park.img}} style={detail.img} />
                 <View style={detail.textContainer}>
+                <Button
+                        onPress={()=> navigation.navigate('MapScreen')}
+                        title="map"
+                    >
+                        <Text style={{color: '#58BFA5'}}>Check et uut</Text>
+                    </Button>
                     <View style={detail.title}>
                         <Text style={detail.titleName}>{screenProps.park.name}</Text>
                         <Text style={detail.xp}>150xp</Text>
                     </View>    
                     <Text>{screenProps.park.description}</Text>
+                    
                 </View>    
             </View>
         );
