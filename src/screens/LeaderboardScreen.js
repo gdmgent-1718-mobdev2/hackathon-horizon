@@ -1,11 +1,12 @@
 import React,  { Component } from 'react';
-import { StyleSheet, Text, View, AppRegistry, Image, ListView, TextInput } from 'react-native';
+import { StyleSheet, Text, View, AppRegistry, Image, ListView, TextInput, ScrollView } from 'react-native';
 import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base'
 import * as firebase from 'firebase';
 import { initializeFirebase, subscribeToTrack, listenFirebaseChanges } from '../../utils/firebaseService';
 import { StackNavigator } from 'react-navigation';
 import { AppNavigator } from '../navigators/AppNavigator';
 import SearchBar from '../components/SearchBar';
+import NavBar from '../components/NavBar';
 
 class LeaderboardScreen extends React.Component {
 
@@ -45,20 +46,31 @@ class LeaderboardScreen extends React.Component {
   }
 
   render() {
+		let Dimensions = require('Dimensions')
+		let {width, height} = Dimensions.get('window');
+		medal = function(rowID){
+			let colors = ['#FFD700', '#C0C0C0', '#CD7F32'];
+			return{
+				borderColor: colors[rowID]
+			}
+		}
     return (
       <View style={styles.container}>
+			<ScrollView style={{height: height - 48}}>
 				<SearchBar />
         <ListView
           style={styles.listView}
 					dataSource={this.state.dataSource}
           renderRow={(rowData, sectionID, rowID) => 
             <View style={styles.listViewItem}>
-							<Image source={{uri: rowData.img}} style={[styles.img, this.medal]} />
-              <Text style={styles.name}><Text style={styles.bold}>{rowData.first_name}</Text> <Text style={styles.bold}>{rowData.last_name}</Text> {"\n"}35 badges </Text>
+							<Image source={{uri: rowData.img}} style={[styles.img, medal(rowID)]} />
+              <Text style={styles.name}><Text style={styles.bold}>{rowData.first_name}</Text> <Text style={styles.bold}>{rowData.last_name}</Text>{"\n"}35 badges </Text>
               <Text style={styles.lvl}>lvl {Math.floor(rowData.xp / 100)}</Text>
               <Image style={styles.arrow} source={require('../images/arrowRight.png')} />
             </View>}
         />
+				</ScrollView>
+				<NavBar/>
       </View> 
     );
   }
@@ -79,34 +91,21 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   listViewItem: {
-    backgroundColor: '#fff',
-    marginBottom: '2%',
-    padding: '2%',
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
-    elevation: 2,
+    justifyContent: 'space-around'
   },
   img: {
-    width: 60,
-    height: 60,
+    width: 54,
+    height: 54,
 		borderRadius: 30,
 		borderColor: 'transparent',
-		borderWidth: 3
+		borderWidth: 5
 	},
-	gold: {
-    borderColor: '#FFD700'
-	},
-	silver: {
-    borderColor: '#C0C0C0'
-	},
-	bronze: {
-    borderColor: '#CD7F32'
-  },
   name: {
     fontWeight: 'normal',
-    marginLeft: 10,
+    marginLeft: 5,
     paddingTop: 12,
     width: 165,
     height: 60,
@@ -117,7 +116,7 @@ const styles = StyleSheet.create({
   },
   lvl: {
     color: '#48CFAD',
-    paddingHorizontal: 10,
+    paddingRight: 10,
     fontSize: 11,
   },
   arrow: {

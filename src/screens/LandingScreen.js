@@ -1,11 +1,12 @@
 import React,  { Component } from 'react';
-import { StyleSheet, Text, View, AppRegistry, Image, ListView, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, AppRegistry, Image, ListView, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base'
 import * as firebase from 'firebase';
 import { initializeFirebase, subscribeToTrack, listenFirebaseChanges } from '../../utils/firebaseService';
 import { StackNavigator } from 'react-navigation';
 import { AppNavigator } from '../navigators/AppNavigator';
 import SearchBar from '../components/SearchBar';
+import NavBar from '../components/NavBar';
 
 class LandingScreen extends React.Component {
 
@@ -46,31 +47,37 @@ class LandingScreen extends React.Component {
   }
 
   render() {
+		let Dimensions = require('Dimensions');
+		let {width, height} = Dimensions.get('window');
     const { navigation, screenProps } = this.props
     return (
-      <View style={styles.container}>
-        <SearchBar />  
-        <ListView
-          style={styles.listView}
-          dataSource={this.state.dataSource}
-          renderRow={(rowData) =>
-            <TouchableOpacity onPress={() => {screenProps.park = rowData, navigation.navigate('DetailScreen')}}> 
-              <View style={styles.listViewItem}>
-                <Image source={{uri: rowData.img}} style={styles.img} />
-                <Text style={styles.name}><Text style={styles.bold}>{rowData.name}</Text> {"\n"} 120 m</Text>
-                <Text style={styles.xp}>150xp</Text>
-                <Image style={styles.arrow} source={require('../images/arrowRight.png')} />
-              </View>
-            </TouchableOpacity>  
-            }
-        />
-				<Button
-							style={styles.link}
-              onPress={()=> navigation.navigate('LeaderboardScreen')}
-              title="leaderboard"
-            >
-            <Text style={{color: '#58BFA5'}}>Leaderboard</Text>
-            </Button>
+      <View style={{flex: 1}}>
+				<ScrollView style={{height: height - 48}}>
+				<View style={styles.container}>
+					<SearchBar />
+					<ListView
+						style={styles.listView}
+						dataSource={this.state.dataSource}
+						renderRow={(rowData) =>
+							<TouchableOpacity onPress={() => {screenProps.park = rowData, navigation.navigate('DetailScreen')}}> 
+								<View style={styles.listViewItem}>
+									<Image source={{uri: rowData.img}} style={styles.img} />
+									<Text style={styles.name}><Text style={styles.bold}>{rowData.name}</Text> {"\n"}120 m</Text>
+									<Text style={styles.xp}>150xp</Text>
+									<Image style={styles.arrow} source={require('../images/arrowRight.png')} />
+								</View>
+							</TouchableOpacity>  
+							}
+					/>
+					<TouchableOpacity
+								style={styles.templink}
+								onPress={()=> navigation.navigate('LeaderboardScreen')}
+							>
+							<Text style={{color: 'white'}}>Leaderboard</Text>
+					</TouchableOpacity>
+					</View>
+				</ScrollView>
+				<NavBar />
       </View> 
     );
   }
@@ -83,9 +90,9 @@ export default LandingScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
-    alignItems: 'center',
-    justifyContent: 'center',
+		backgroundColor: '#f5f5f5',
+		justifyContent: 'center',
+		alignItems:'center'
   },
   inputContainer: {
     width: '90%',
@@ -150,6 +157,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     height: 15,
     width: 10,
-  }
+	},
+	templink: {
+		backgroundColor:'#48CFAD',
+		padding:10,
+		margin:10
+	}
 });
 

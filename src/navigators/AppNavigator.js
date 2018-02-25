@@ -10,7 +10,8 @@ import LeaderboardScreen from '../screens/LeaderboardScreen';
 import MapScreen from '../screens/MapScreen';
 
 export const AppNavigator = StackNavigator({
-  LandingScreen: { screen: LandingScreen },
+	LandingScreen: { screen: LandingScreen },
+  LeaderboardScreen: { screen: LeaderboardScreen },
   LoginScreen: { screen: LoginScreen },
   Register: { screen: RegisterScreen },
   DetailScreen: { screen: DetailScreen },
