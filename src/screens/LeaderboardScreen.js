@@ -6,6 +6,7 @@ import { initializeFirebase, subscribeToTrack, listenFirebaseChanges } from '../
 import { StackNavigator } from 'react-navigation';
 import { AppNavigator } from '../navigators/AppNavigator';
 import SearchBar from '../components/SearchBar';
+import NavBar from '../components/NavBar';
 
 class LeaderboardScreen extends React.Component {
 
@@ -45,6 +46,8 @@ class LeaderboardScreen extends React.Component {
   }
 
   render() {
+		let Dimensions = require('Dimensions')
+		let {width, height} = Dimensions.get('window');
 		medal = function(rowID){
 			let colors = ['#FFD700', '#C0C0C0', '#CD7F32'];
 			return{
@@ -53,6 +56,7 @@ class LeaderboardScreen extends React.Component {
 		}
     return (
       <View style={styles.container}>
+			<ScrollView style={{height: height - 48}}>
 				<SearchBar />
         <ListView
           style={styles.listView}
@@ -65,6 +69,8 @@ class LeaderboardScreen extends React.Component {
               <Image style={styles.arrow} source={require('../images/arrowRight.png')} />
             </View>}
         />
+				</ScrollView>
+				<NavBar/>
       </View> 
     );
   }
