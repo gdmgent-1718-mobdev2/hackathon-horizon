@@ -55,20 +55,22 @@ class LeaderboardScreen extends React.Component {
 			}
 		}
     return (
-      <View style={styles.container}>
-			<ScrollView style={{height: height - 48}}>
-				<SearchBar />
-        <ListView
-          style={styles.listView}
-					dataSource={this.state.dataSource}
-          renderRow={(rowData, sectionID, rowID) => 
-            <View style={styles.listViewItem}>
-							<Image source={{uri: rowData.img}} style={[styles.img, medal(rowID)]} />
-              <Text style={styles.name}><Text style={styles.bold}>{rowData.first_name}</Text> <Text style={styles.bold}>{rowData.last_name}</Text>{"\n"}35 badges </Text>
-              <Text style={styles.lvl}>lvl {Math.floor(rowData.xp / 100)}</Text>
-              <Image style={styles.arrow} source={require('../images/arrowRight.png')} />
-            </View>}
-        />
+      <View style={{flex:1}}>
+			<ScrollView style={{height: height - 48, backgroundColor:'#F5F5F5'}}>
+				<View style={styles.container}>
+					<SearchBar />
+					<ListView
+						style={styles.listView}
+						dataSource={this.state.dataSource}
+						renderRow={(rowData, sectionID, rowID) => 
+							<View style={styles.listViewItem}>
+								<Image source={{uri: rowData.img}} style={[styles.img, medal(rowID)]} />
+								<Text style={styles.name}><Text style={styles.bold}>{rowData.first_name}</Text> <Text style={styles.bold}>{rowData.last_name}</Text>{"\n"}35 badges </Text>
+								<Text style={styles.lvl}>lvl {Math.floor(rowData.xp / 100)}</Text>
+								<Image style={styles.arrow} source={require('../images/arrowRight.png')} />
+							</View>}
+					/>
+					</View>
 				</ScrollView>
 				<NavBar/>
       </View> 
@@ -81,20 +83,21 @@ export default LeaderboardScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+		backgroundColor: '#f5f5f5',
     alignItems: 'center',
     justifyContent: 'center',
+		height: "100%"
 	},
   listView: {
     width: '90%',
     marginTop: 20,
-    marginBottom: 5,
+    marginBottom: 5
   },
   listViewItem: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around'
+		justifyContent: 'space-around'
   },
   img: {
     width: 54,
@@ -121,8 +124,7 @@ const styles = StyleSheet.create({
   },
   arrow: {
     marginLeft: 10,
-    height: 15,
-    width: 10,
+    height: 12,
+    width: 8,
   }
 });
-
