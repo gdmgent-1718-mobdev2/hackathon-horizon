@@ -1,41 +1,43 @@
-import React,  { Component } from 'react';
-import { StyleSheet, Text, View, AppRegistry, Image, ListView, TextInput } from 'react-native';
+import React, { Component } from 'react';
+import { View, ScrollView } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { AppNavigator } from '../navigators/AppNavigator';
 import { MapView } from 'expo';
 
+import NavBar from '../components/NavBar';
 
 class MapScreen extends React.Component {
-    constructor(props){
-        super(props);
-    }
-      
-    render() {
-        const { navigation, screenProps } = this.props
-        return ( 
-            <MapView
-                style={map.container}
-                initialRegion={{
-                    latitude: screenProps.park.lat,
-                    longitude: screenProps.park.lng,
-                    latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421,
-                }}
-            >
-                <MapView.Marker
-                    coordinate={{
-                        latitude: screenProps.park.lat, longitude: screenProps.park.lng
-                    }}
-                />   
-            </MapView>  
-      );
-    }
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+
+		let Dimensions = require('Dimensions');
+		let { width, height } = Dimensions.get('window');
+		const { navigation, screenProps } = this.props
+		return (
+			<View style={{flex:1}}>
+				<ScrollView style={{ height: height - 48 }}>
+					<MapView style={{height: height - 48}}
+						initialRegion={{
+							latitude: screenProps.park.lat,
+							longitude: screenProps.park.lng,
+							latitudeDelta: 0.0922,
+							longitudeDelta: 0.0421,
+						}}
+					>
+						<MapView.Marker
+							coordinate={{
+								latitude: screenProps.park.lat, longitude: screenProps.park.lng
+							}}
+						/>
+					</MapView>
+				</ScrollView>
+				<NavBar />
+			</View>
+		);
+	}
 };
 
 export default MapScreen;
-
-const map = StyleSheet.create({
-    container: {
-        height: '90%',
-    },
-});    

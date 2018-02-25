@@ -11,10 +11,10 @@ import MapScreen from '../screens/MapScreen';
 
 export const AppNavigator = StackNavigator({
 	LandingScreen: { screen: LandingScreen },
-  LeaderboardScreen: { screen: LeaderboardScreen },
-  LoginScreen: { screen: LoginScreen },
-  Register: { screen: RegisterScreen },
-  DetailScreen: { screen: DetailScreen },
-  LeaderboardScreen: { screen: LeaderboardScreen },
-  MapScreen: { screen: MapScreen }
+	LeaderboardScreen: { screen: LeaderboardScreen },
+	LoginScreen: { screen: LoginScreen },
+	Register: { screen: RegisterScreen },
+	DetailScreen: { screen: DetailScreen },
+	LeaderboardScreen: { screen: LeaderboardScreen },
+	MapScreen: { screen: MapScreen }
 });
