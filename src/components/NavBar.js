@@ -1,23 +1,28 @@
 import React,  { Component } from 'react';
 import { StyleSheet, View, Image, TextInput, TouchableHighlight } from 'react-native';
+import { withNavigation } from 'react-navigation';
 
-const NavBar = (props) => (
-  <View style={styles.navContainer}>
-			<TouchableHighlight style={styles.navBtn}>
-				<Image style={styles.navIcon} source={require('../images/icons/parks.png')} />
-			</TouchableHighlight>
-			<TouchableHighlight style={styles.navBtn}>
-				<Image style={styles.navIcon} source={require('../images/icons/leaderboard_active.png')} />
-			</TouchableHighlight>
-			<TouchableHighlight style={styles.navBtn}>
-				<Image style={styles.navIcon} source={require('../images/icons/profile.png')} />
-			</TouchableHighlight>
-			<TouchableHighlight style={styles.navBtn}>
-				<Image style={styles.navIcon} source={require('../images/icons/settings.png')} />
-			</TouchableHighlight>
-	</View>
-);
-
+export class NavBar extends React.Component {
+	render(){
+		return ( 
+			<View style={styles.navContainer}>
+				<TouchableHighlight onPress={() => this.props.navigation.navigate('LandingScreen')} style={styles.navBtn}>
+					<Image style={styles.navIcon} source={require('../images/icons/parks.png')} />
+				</TouchableHighlight>
+				<TouchableHighlight onPress={() => this.props.navigation.navigate('LeaderboardScreen')} style={styles.navBtn}>
+					<Image style={styles.navIcon} source={require('../images/icons/leaderboard_active.png')} />
+				</TouchableHighlight>
+				<TouchableHighlight style={styles.navBtn}>
+					<Image style={styles.navIcon} source={require('../images/icons/profile.png')} />
+				</TouchableHighlight>
+				<TouchableHighlight style={styles.navBtn}>
+					<Image style={styles.navIcon} source={require('../images/icons/settings.png')} />
+				</TouchableHighlight>
+		</View>
+		)
+	}
+}
+  
 const styles = StyleSheet.create({
   navContainer: {
 		flex: 1,
@@ -43,4 +48,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default NavBar;
+export default withNavigation(NavBar);
