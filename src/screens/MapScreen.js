@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, Text, TouchableOpacity, Linking } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { AppNavigator } from '../navigators/AppNavigator';
 import { MapView } from 'expo';
@@ -31,7 +31,13 @@ class MapScreen extends React.Component {
 							coordinate={{
 								latitude: screenProps.park.lat, longitude: screenProps.park.lng
 							}}
-						/>
+						>
+							<MapView.Callout style={{padding: 8}} onPress={ ()=>{ Linking.openURL('http://maps.google.com/?q=' + screenProps.park.name  +  '+Gent')}}>
+								<Text style={{fontSize: 16,fontWeight: 'bold',color: '#707070'}}>{screenProps.park.name}</Text>
+								<Text style={{color: '#48CFAD'}}>Show directions</Text>
+	
+							</MapView.Callout>
+						</MapView.Marker>	
 					</MapView>
 				</ScrollView>
 				<NavBar />

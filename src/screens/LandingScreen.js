@@ -24,7 +24,7 @@ class LandingScreen extends React.Component {
 
 	}
 	listenForParks(ref) {
-		ref.on('value', (dataSnapshot) => {
+		ref.orderByChild('name').on('value', (dataSnapshot) => {
 			let parks = [];
 			dataSnapshot.forEach((child) => {
 				parks.push({
