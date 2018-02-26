@@ -69,12 +69,6 @@ class LandingScreen extends React.Component {
 								</TouchableOpacity>
 							}
 						/>
-						<TouchableOpacity
-							style={styles.templink}
-							onPress={() => navigation.navigate('LeaderboardScreen')}
-						>
-							<Text style={{ color: 'white' }}>Leaderboard</Text>
-						</TouchableOpacity>
 					</View>
 				</ScrollView>
 				<NavBar />
@@ -135,11 +129,6 @@ const styles = StyleSheet.create({
 		marginLeft: 10,
 		height: 15,
 		width: 10,
-	},
-	templink: {
-		backgroundColor: '#48CFAD',
-		padding: 10,
-		margin: 10
 	}
 });
 

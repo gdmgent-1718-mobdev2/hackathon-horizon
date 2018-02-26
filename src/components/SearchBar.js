@@ -1,5 +1,5 @@
 import React,  { Component } from 'react';
-import { StyleSheet, View, Image, TextInput, TouchableNativeFeedback } from 'react-native';
+import { StyleSheet, View, Image, TextInput, TouchableHighlight } from 'react-native';
 
 const SearchBar = (props) => (
   <View style={styles.inputContainer}>
@@ -8,9 +8,9 @@ const SearchBar = (props) => (
 			placeholder="Zoeken..."
 			underlineColorAndroid="transparent"
 		/>
-		<TouchableNativeFeedback>
+		<TouchableHighlight>
 			<Image style={styles.searchIcon} source={require('../images/searchIcon.png')} />
-		</TouchableNativeFeedback>
+		</TouchableHighlight>
 	</View>
 );
 
