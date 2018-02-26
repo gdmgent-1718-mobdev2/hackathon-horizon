@@ -1,34 +1,28 @@
 import React,  { Component } from 'react';
-import { StyleSheet, View, Image, TextInput, TouchableNativeFeedback } from 'react-native';
+import { StyleSheet, View, Image, TextInput, TouchableHighlight } from 'react-native';
 
 const NavBar = (props) => (
   <View style={styles.navContainer}>
-		<View style={styles.navBtn}>
-			<TouchableNativeFeedback>
+			<TouchableHighlight style={styles.navBtn}>
 				<Image style={styles.navIcon} source={require('../images/icons/search.png')} />
-			</TouchableNativeFeedback>
-		</View>
-		<View style={styles.navBtn}>
-			<TouchableNativeFeedback>
+			</TouchableHighlight>
+			<TouchableHighlight style={styles.navBtn}>
 				<Image style={styles.navIcon} source={require('../images/icons/parks.png')} />
-			</TouchableNativeFeedback>
-		</View>
-		<View style={styles.navBtn}>
-			<TouchableNativeFeedback>
+			</TouchableHighlight>
+			<TouchableHighlight style={styles.navBtn}>
 				<Image style={styles.navIcon} source={require('../images/icons/leaderboard_active.png')} />
-			</TouchableNativeFeedback>
-		</View>
-		<View style={styles.navBtn}>
-			<TouchableNativeFeedback>
+			</TouchableHighlight>
+			<TouchableHighlight style={styles.navBtn}>
 				<Image style={styles.navIcon} source={require('../images/icons/profile.png')} />
-			</TouchableNativeFeedback>
-		</View>
+			</TouchableHighlight>
 	</View>
 );
 
 const styles = StyleSheet.create({
   navContainer: {
 		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
 		flexDirection: 'row',
 		backgroundColor: 'white',
 		width: '100%',
@@ -38,7 +32,8 @@ const styles = StyleSheet.create({
 	navBtn:{
 		flex: 1,
 		width: "25%",
-		height: "100%",
+		height: 16,
+		paddingVertical: 8,
 		alignItems: 'center',
 		justifyContent: 'center'
 	},

@@ -23,7 +23,7 @@ class DetailScreen extends React.Component {
 							<Text style={detail.titleName}>{screenProps.park.name}</Text>
 							<Text style={detail.xp}>150xp</Text>
 						</View>
-						<Text>{screenProps.park.description}</Text>
+						<Text style={detail.description}>{screenProps.park.description}</Text>
 						<TouchableHighlight style={detail.mapBtn} onPress={() => navigation.navigate('MapScreen')}>
 							<Text style={{ color: 'white', fontWeight:"bold" }}>Toon op de kaart</Text>
 						</TouchableHighlight>
@@ -45,7 +45,7 @@ const detail = StyleSheet.create({
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
-		padding: 20,
+		padding: 20
 	},
 	mapBtn: {
 		backgroundColor: '#48CFAD',
@@ -53,6 +53,9 @@ const detail = StyleSheet.create({
 		paddingVertical: 10,
 		paddingHorizontal: 16,
 		borderRadius: 20,
+	},
+	description: {
+		width: '100%'
 	},
 	title: {
 		flex: 1,
