@@ -1,6 +1,6 @@
 import React,  { Component } from 'react';
 import { StyleSheet, Text, View, AppRegistry, Image } from 'react-native';
-import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base'
+import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base';
 import * as firebase from 'firebase';
 import { initializeFirebase, subscribeToTrack, listenFirebaseChanges } from '../../utils/firebaseService';
 import { StackNavigator } from 'react-navigation';

@@ -9,14 +9,18 @@ import DetailScreen from '../screens/DetailScreen';
 import LeaderboardScreen from '../screens/LeaderboardScreen';
 import MapScreen from '../screens/MapScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import SettingScreen from '../screens/SettingScreen';
+import BadgeScreen from '../screens/BadgeScreen';
 
 export const AppNavigator = StackNavigator({
+	BadgeScreen: { screen: BadgeScreen },
+
 	LoginScreen: { screen: LoginScreen },
-	ProfileScreen: { screen: ProfileScreen },
-	LandingScreen: { screen: LandingScreen },
-	LeaderboardScreen: { screen: LeaderboardScreen },
 	Register: { screen: RegisterScreen },
+	LandingScreen: { screen: LandingScreen },
 	DetailScreen: { screen: DetailScreen },
+	MapScreen: { screen: MapScreen },
 	LeaderboardScreen: { screen: LeaderboardScreen },
-	MapScreen: { screen: MapScreen }
+	ProfileScreen: { screen: ProfileScreen },
+	SettingScreen: {screen: SettingScreen},
 });
