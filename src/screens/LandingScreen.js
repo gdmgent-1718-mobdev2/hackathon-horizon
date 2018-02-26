@@ -81,8 +81,6 @@ class LandingScreen extends React.Component {
 			</View>
 		);
 	}
-
-
 }
 
 export default LandingScreen
@@ -94,28 +92,9 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
-	inputContainer: {
-		width: '90%',
-		marginTop: 40,
-		padding: 10,
-		backgroundColor: '#FFF',
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-around',
-		elevation: 2,
-
-	},
-	input: {
-		width: '90%',
-	},
-	searchIcon: {
-		height: 15,
-		width: 15,
-	},
 	listView: {
 		width: '90%',
-		marginTop: 20,
-		marginBottom: 5,
+		marginBottom: 16,
 	},
 	listViewItem: {
 		backgroundColor: '#fff',

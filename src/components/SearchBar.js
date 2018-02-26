@@ -17,7 +17,7 @@ const SearchBar = (props) => (
 const styles = StyleSheet.create({
   inputContainer: {
     width: '90%',
-    marginTop: 40,
+		marginVertical: 32,
     padding: 10,
     backgroundColor: '#FFF',
     flexDirection: 'row',

@@ -4,9 +4,6 @@ import { StyleSheet, View, Image, TextInput, TouchableHighlight } from 'react-na
 const NavBar = (props) => (
   <View style={styles.navContainer}>
 			<TouchableHighlight style={styles.navBtn}>
-				<Image style={styles.navIcon} source={require('../images/icons/search.png')} />
-			</TouchableHighlight>
-			<TouchableHighlight style={styles.navBtn}>
 				<Image style={styles.navIcon} source={require('../images/icons/parks.png')} />
 			</TouchableHighlight>
 			<TouchableHighlight style={styles.navBtn}>
@@ -14,6 +11,9 @@ const NavBar = (props) => (
 			</TouchableHighlight>
 			<TouchableHighlight style={styles.navBtn}>
 				<Image style={styles.navIcon} source={require('../images/icons/profile.png')} />
+			</TouchableHighlight>
+			<TouchableHighlight style={styles.navBtn}>
+				<Image style={styles.navIcon} source={require('../images/icons/settings.png')} />
 			</TouchableHighlight>
 	</View>
 );
@@ -32,13 +32,13 @@ const styles = StyleSheet.create({
 	navBtn:{
 		flex: 1,
 		width: "25%",
-		height: 16,
+		height: 24,
 		paddingVertical: 8,
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
 	navIcon: {
-		height: 16
+		height: 24
 	}
 });
 

@@ -79,4 +79,4 @@ const detail = StyleSheet.create({
 		color: '#FFF',
 		fontSize: 11,
 	},
-});    
+});

@@ -90,7 +90,6 @@ const styles = StyleSheet.create({
 	},
 	listView: {
 		width: '90%',
-		marginTop: 20,
 		marginBottom: 5
 	},
 	listViewItem: {
