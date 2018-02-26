@@ -8,11 +8,13 @@ import LandingScreen from '../screens/LandingScreen';
 import DetailScreen from '../screens/DetailScreen';
 import LeaderboardScreen from '../screens/LeaderboardScreen';
 import MapScreen from '../screens/MapScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 
 export const AppNavigator = StackNavigator({
+	LoginScreen: { screen: LoginScreen },
+	ProfileScreen: { screen: ProfileScreen },
 	LandingScreen: { screen: LandingScreen },
 	LeaderboardScreen: { screen: LeaderboardScreen },
-	LoginScreen: { screen: LoginScreen },
 	Register: { screen: RegisterScreen },
 	DetailScreen: { screen: DetailScreen },
 	LeaderboardScreen: { screen: LeaderboardScreen },

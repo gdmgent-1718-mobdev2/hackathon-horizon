@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
 	img: {
 		width: 54,
 		height: 54,
-		borderRadius: 30,
+		borderRadius: 54/2,
 		borderColor: 'transparent',
 		borderWidth: 5
 	},
