@@ -98,8 +98,8 @@ export default ProfileScreen
 
 const profile = StyleSheet.create({
 	img: {
-    height: 0,
-    width: 80,
+    	height: 0,
+    	width: 80,
 		height: 80,
 		borderRadius: 80/2,
 		margin: 30,
