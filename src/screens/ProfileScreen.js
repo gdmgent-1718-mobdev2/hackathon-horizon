@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar';
 import * as firebase from 'firebase';
 import { initializeFirebase, subscribeToTrack, listenFirebaseChanges } from '../../utils/firebaseService';
 import { StackNavigator } from 'react-navigation';
-import { AppNavigator } from '../navigators/AppNavigator';
+//import { listenForBadges } from './BadgeScreen';
 
 class ProfileScreen extends React.Component {
 	constructor(props) {
@@ -12,10 +12,15 @@ class ProfileScreen extends React.Component {
 		//Get current logged in User
 		this.userAuth = firebase.auth().currentUser || {email:"mtransez@dev.com"};
 
-		//Get userstable from Firebase
+		const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+		
+		//'snapshot' maken van de data uit database
 		this.database = firebase.database();
 		this.rootRef = firebase.database().ref();
-		this.ref = this.rootRef.child("users");
+		this.badgeRef = this.rootRef.child("badges");
+
+		//Get userstable from Firebase
+		this.userRef = this.rootRef.child("users");
 
 		//Define currentUser placeholder
 		this.state = {
@@ -25,14 +30,14 @@ class ProfileScreen extends React.Component {
 				last_name:'',
 				xp: 0,
 				img: 'https://getinkspired.com/static//upload/151587060935.jpg'
-			}
+			},
+			dataSource: ds,
 		}
 	}
 
-	listenForUser(ref, userMail) {
+	listenForUser(userRef, userMail) {
 		//Get user data based on current user's email
-		ref.orderByChild('email').equalTo(userMail).on('value', (dataSnapshot) => {
-			//empty user object
+		userRef.orderByChild('email').equalTo(userMail).on('value', (dataSnapshot) => {
 			let user = {};
 			dataSnapshot.forEach((child) => {
 				user.email = child.val().email;
@@ -56,9 +61,29 @@ class ProfileScreen extends React.Component {
 		});
 	}
 
+	listenForBadges(badgesRef) {
+		badgesRef.orderByChild('xp').on('value', (badgeSnapshot) => {
+			let badges = [];
+			badgeSnapshot.forEach((child) => {
+				badges.push({
+					name: child.val().name,
+					description: child.val().description,
+					lvl_required: child.val().lvl_required,
+					xp: child.val().xp,
+					img: child.val().img
+				});
+			});
+
+			this.setState({
+				dataSource: this.state.dataSource.cloneWithRows(badges),
+			});
+		});
+	}
+
 	componentDidMount() {
 		// start listening for firebase updates
-		this.listenForUser(this.ref, this.userAuth.email);
+		this.listenForUser(this.userRef, this.userAuth.email);
+		this.listenForBadges(this.badgeRef);
 	}
 
 	render() {
@@ -80,10 +105,24 @@ class ProfileScreen extends React.Component {
 					</View>
 					<View style={profile.badges}>
 						<Text style={profile.title}>Badges</Text>
+					</View>
+				
+					<View style={profile.container}>
+						<ListView
+							style={profile.listView}
+							dataSource={this.state.dataSource}
+							renderRow={(rowData) =>
+								<View style={profile.listViewItem}>
+									<Image source={{ uri: rowData.img }} style={profile.imgBadge} />
+									<Text style={profile.name}><Text style={profile.bold}>{rowData.name}</Text>{"\n"}{rowData.description}</Text>
+									<Text  style={profile.xp}>{rowData.xp} xp</Text>
+								</View>}
+						/>
 						<Text style={profile.link} onPress={()=> navigation.navigate('BadgeScreen')}>
   							Alle badges >
 						</Text>
 					</View>
+
 					<View style={profile.badges}>
 						<Text style={profile.title}>Leader</Text>
 						<Text style={profile.link}onPress={()=> navigation.navigate('LeaderboardScreen')}>
@@ -100,6 +139,15 @@ class ProfileScreen extends React.Component {
 export default ProfileScreen
 
 const profile = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: '#fff',
+		alignItems: 'center',
+		justifyContent: 'center',
+		height: "100%",
+		padding:20,
+		paddingTop:-20
+	},
 	img: {
     	height: 0,
     	width: 80,
@@ -107,6 +155,13 @@ const profile = StyleSheet.create({
 		borderRadius: 80/2,
 		margin: 30,
 		position: 'relative'
+	},
+	imgBadge: {
+		width: 54,
+		height: 54,
+		borderRadius: 54/2,
+		borderColor: 'transparent',
+		borderWidth: 5
 	},
 	textContainer: {
 		flex: 1,
@@ -120,7 +175,7 @@ const profile = StyleSheet.create({
 	},
 	badges: {
 		width: '100%',
-		height: 300,
+		height: 80,
 		backgroundColor: "white",
 		padding: 30,
   },
@@ -161,5 +216,37 @@ const profile = StyleSheet.create({
 		letterSpacing: 0,
 		textAlign: "left",
 		color: "#5fbba4"	
-	}
-});    
+	},
+	listView: {
+		width: '100%',
+		marginBottom: 5
+	},
+	listViewItem: {
+		paddingVertical:8,
+		flex: 1,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-around'
+	},
+	name: {
+		fontWeight: 'normal',
+		marginLeft: 5,
+		paddingTop: 12,
+		width: 185,
+		height: 60,
+		color: '#707070',
+	},
+	bold: {
+		fontWeight: 'bold'
+	},
+	xp: {
+		backgroundColor: '#48CFAD',
+		paddingTop: 10,
+		paddingVertical: 10,
+		paddingHorizontal: 10,
+		borderRadius: 20,
+		color: '#FFF',
+		fontSize: 11,
+	},
+});  
+
