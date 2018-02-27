@@ -14,6 +14,29 @@ class DetailScreen extends React.Component {
 		let Dimensions = require('Dimensions');
 		let { width, height } = Dimensions.get('window');
 		const { navigation, screenProps } = this.props
+
+		xpColor = function (xp) {
+			switch(xp) {
+				case 50:
+					return {backgroundColor: '#41AFDC'}
+					break;
+				case 100:
+					return {backgroundColor: '#44E1E6'}
+					break;
+				case 150:
+					return {backgroundColor: '#48CFAD'}
+					break;
+				case 200:
+					return {backgroundColor: '#44E690'}
+					break;
+				case 250:
+					return {backgroundColor: '#41DC5E'}
+					break;
+				default:
+					return {backgroundColor: '#48CFAD'}
+			}
+		}
+
 		return (
 			<View style={{ flex: 1 }}>
 				<ScrollView style={{ height: height - 48 }}>
@@ -21,7 +44,7 @@ class DetailScreen extends React.Component {
 					<View style={detail.textContainer}>
 						<View style={detail.title}>
 							<Text style={detail.titleName}>{screenProps.park.name}</Text>
-							<Text style={detail.xp}>{screenProps.park.xp}xp</Text>
+							<Text style={[detail.xp, xpColor(screenProps.park.xp)]}>{screenProps.park.xp}xp</Text>
 						</View>
 						<Text style={detail.description}>{screenProps.park.description}</Text>
 						<TouchableHighlight style={detail.mapBtn} onPress={() => navigation.navigate('MapScreen')}>

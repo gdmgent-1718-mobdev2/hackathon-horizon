@@ -24,7 +24,7 @@ class LandingScreen extends React.Component {
 
 	}
 	listenForParks(ref) {
-		ref.orderByChild('name').on('value', (dataSnapshot) => {
+		ref.orderByChild('xp').on('value', (dataSnapshot) => {
 			let parks = [];
 			dataSnapshot.forEach((child) => {
 				parks.push({
@@ -37,7 +37,7 @@ class LandingScreen extends React.Component {
 				});
 			});
 			this.setState({
-				dataSource: this.state.dataSource.cloneWithRows(parks),
+				dataSource: this.state.dataSource.cloneWithRows(parks.reverse()),
 			});
 		});
 	}
@@ -51,6 +51,29 @@ class LandingScreen extends React.Component {
 		let Dimensions = require('Dimensions');
 		let { width, height } = Dimensions.get('window');
 		const { navigation, screenProps } = this.props
+
+		xpColor = function (xp) {
+			switch(xp) {
+				case 50:
+					return {backgroundColor: '#41AFDC'}
+					break;
+				case 100:
+					return {backgroundColor: '#44E1E6'}
+					break;
+				case 150:
+					return {backgroundColor: '#48CFAD'}
+					break;
+				case 200:
+					return {backgroundColor: '#44E690'}
+					break;
+				case 250:
+					return {backgroundColor: '#41DC5E'}
+					break;
+				default:
+					return {backgroundColor: '#48CFAD'}
+			}
+		}
+
 		return (
 			<View style={{ flex: 1 }}>
 				<ScrollView style={{ height: height - 48 }}>
@@ -64,7 +87,7 @@ class LandingScreen extends React.Component {
 									<View style={styles.listViewItem}>
 										<Image source={{ uri: rowData.img }} style={styles.img} />
 										<Text style={styles.name}><Text style={styles.bold}>{rowData.name}</Text> {"\n"}120 m</Text>
-										<Text style={styles.xp}>{rowData.xp}xp</Text>
+										<Text style={[styles.xp, xpColor(rowData.xp)]}>{rowData.xp}xp</Text>
 										<Image style={styles.arrow} source={require('../images/arrowRight.png')} />
 									</View>
 								</TouchableOpacity>
