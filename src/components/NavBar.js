@@ -10,7 +10,7 @@ export class NavBar extends React.Component {
 					<Image style={styles.navIcon} source={require('../images/icons/parks.png')} />
 				</TouchableHighlight>
 				<TouchableHighlight onPress={() => this.props.navigation.navigate('LeaderboardScreen')} style={styles.navBtn}>
-					<Image style={styles.navIcon} source={require('../images/icons/leaderboard_active.png')} />
+					<Image style={styles.navIcon} source={require('../images/icons/leaderboard.png')} />
 				</TouchableHighlight>
 				<TouchableHighlight onPress={() => this.props.navigation.navigate('ProfileScreen')} style={styles.navBtn}>
 					<Image style={styles.navIcon} source={require('../images/icons/profile.png')} />
