@@ -147,8 +147,8 @@ const profile = StyleSheet.create({
 		paddingTop:-20
 	},
 	img: {
-    height: 0,
-    width: 80,
+    	height: 0,
+    	width: 80,
 		height: 80,
 		borderRadius: 80/2,
 		margin: 30,
