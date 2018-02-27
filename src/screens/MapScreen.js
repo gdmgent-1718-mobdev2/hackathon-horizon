@@ -4,6 +4,8 @@ import { StackNavigator } from 'react-navigation';
 import { AppNavigator } from '../navigators/AppNavigator';
 import { MapView } from 'expo';
 
+import marker from '../images/marker.png'
+
 import NavBar from '../components/NavBar';
 
 class MapScreen extends React.Component {
@@ -28,16 +30,19 @@ class MapScreen extends React.Component {
 						}}
 					>
 						<MapView.Marker
+							image={marker}
 							coordinate={{
 								latitude: screenProps.park.lat, longitude: screenProps.park.lng
 							}}
 						>
 							<MapView.Callout style={{padding: 8}} onPress={ ()=>{ Linking.openURL('http://maps.google.com/?q=' + screenProps.park.name  +  '+Gent')}}>
-								<Text style={{fontSize: 16,fontWeight: 'bold',color: '#707070'}}>{screenProps.park.name}</Text>
+								<View style={{flex:1,flexDirection:'row',justifyContent:'flex-start' }}>
+									<Text style={{fontSize: 16,fontWeight: 'bold',color: '#707070'}}>{screenProps.park.name}</Text>
+									<Text style={{backgroundColor: '#48CFAD',marginLeft: 20,paddingVertical: 5,paddingHorizontal: 10,borderRadius: 20,color: '#FFF',fontSize: 11,}}>{screenProps.park.xp}xp</Text>
+								</View>
 								<Text style={{color: '#48CFAD'}}>Show directions</Text>
-	
 							</MapView.Callout>
-						</MapView.Marker>	
+						</MapView.Marker>
 					</MapView>
 				</ScrollView>
 				<NavBar />

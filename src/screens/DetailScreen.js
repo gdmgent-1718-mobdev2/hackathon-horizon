@@ -21,7 +21,7 @@ class DetailScreen extends React.Component {
 					<View style={detail.textContainer}>
 						<View style={detail.title}>
 							<Text style={detail.titleName}>{screenProps.park.name}</Text>
-							<Text style={detail.xp}>150xp</Text>
+							<Text style={detail.xp}>{screenProps.park.xp}xp</Text>
 						</View>
 						<Text style={detail.description}>{screenProps.park.description}</Text>
 						<TouchableHighlight style={detail.mapBtn} onPress={() => navigation.navigate('MapScreen')}>

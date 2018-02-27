@@ -70,15 +70,12 @@ class LoginScreen extends React.Component {
 
     const { navigation, screenProps } = this.props
     return (
-      
-      <Container style={styles.container}>
-      <View>
-      <Image
-          style={styles.logo}
-          source={require('../images/logo-parkemon.png')}
-      />
-      </View>
-        <Form>
+      <View style={styles.container}>
+				<Image
+						style={styles.logo}
+						source={require('../images/logo-parkemon.png')}
+				/>
+        <Form style={styles.child}>
           <Item floatingLabel style={styles.field}>
             <Label>E-mail</Label>
             <Input 
@@ -115,17 +112,14 @@ class LoginScreen extends React.Component {
           <View style={styles.registerContainer}>
             <Text style={{ paddingTop:45}}>Nog geen account?</Text>
             <Button style={styles.link}
-              onPress={()=> this.navigateTo('Register')}
+              onPress={()=> navigation.navigate('RegisterScreen')}
               title="registreer"
             >
             <Text style={{color: '#58BFA5'}}>Registreer</Text>
             </Button>
           </View>
         </Form>
-
-      </Container>
-
-
+      </View>
   );
   }
 }
@@ -134,62 +128,49 @@ export default LoginScreen
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-  },
-
+		flex: 1,
+		alignItems: 'center',
+		backgroundColor: '#fff',
+		paddingVertical: 64,
+		justifyContent: 'space-between',
+	},
+	child: {
+		width: '90%'
+	},
   registerContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection : 'row',
   },
-
   button: {
-
     backgroundColor: '#58BFA5',
     justifyContent: 'center',
     marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
-
   },
-
   buttonFacebook: {
-
+		backgroundColor:'#3B5998',
     justifyContent: 'center',
     marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
-
   },
-
   buttonText: {
-
-    color: '#FFF',
-
-
+		color: '#FFF',
+		fontWeight: 'bold',
   },
-
   field: {
-
     margin: 30,
-
-
-  },
-
+	},
   logo: {
-
-    width: 200,
-    height: 200,
-    marginLeft: "25%",
-
-
+    width: 100,
+		height: 100,
+		borderRadius: 50
   },
-
   link: {
-
+		elevation: 0,
     marginLeft: 10,
     backgroundColor: 'transparent',
   },

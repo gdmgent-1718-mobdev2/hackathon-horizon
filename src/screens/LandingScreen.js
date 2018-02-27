@@ -33,6 +33,7 @@ class LandingScreen extends React.Component {
 					description: child.val().description,
 					lat: child.val().latitude,
 					lng: child.val().longitude,
+					xp: child.val().xp,
 				});
 			});
 			this.setState({
@@ -63,7 +64,7 @@ class LandingScreen extends React.Component {
 									<View style={styles.listViewItem}>
 										<Image source={{ uri: rowData.img }} style={styles.img} />
 										<Text style={styles.name}><Text style={styles.bold}>{rowData.name}</Text> {"\n"}120 m</Text>
-										<Text style={styles.xp}>150xp</Text>
+										<Text style={styles.xp}>{rowData.xp}xp</Text>
 										<Image style={styles.arrow} source={require('../images/arrowRight.png')} />
 									</View>
 								</TouchableOpacity>

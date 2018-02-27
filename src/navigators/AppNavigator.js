@@ -13,15 +13,16 @@ import SettingScreen from '../screens/SettingScreen';
 import BadgeScreen from '../screens/BadgeScreen';
 
 export const AppNavigator = StackNavigator({
-	ProfileScreen: { screen: ProfileScreen },
 
-	LoginScreen: { screen: LoginScreen },
-	Register: { screen: RegisterScreen },
 	LandingScreen: { screen: LandingScreen },
+	LoginScreen: { screen: LoginScreen },
+	RegisterScreen: { screen: RegisterScreen },
+
+	
 	DetailScreen: { screen: DetailScreen },
 	BadgeScreen: { screen: BadgeScreen },
 	MapScreen: { screen: MapScreen },
 	LeaderboardScreen: { screen: LeaderboardScreen },
-
+	ProfileScreen: { screen: ProfileScreen },
 	SettingScreen: {screen: SettingScreen},
 });

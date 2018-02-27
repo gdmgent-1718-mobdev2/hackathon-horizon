@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableHighlight, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableHighlight, ScrollView, KeyboardAvoidingView } from 'react-native';
 import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base'
 import NavBar from '../components/NavBar';
 import * as firebase from 'firebase';
@@ -98,61 +98,63 @@ class SettingScreen extends React.Component {
 		return (
 			<View style={{ flex: 1 }}>
 				<ScrollView style={{ height: height - 48 }}>
-					
-					<Form>
-						<Item floatingLabel style={settings.field}>
-							<Label>Voornaam</Label>
-							<Input 
-							autoCorrect = {false}
-							autoCapitalize="none"
-							value= {this.state.currentUser.first_name}
-							onChangeText={(firstname)=> this.setState({currentUser: {...this.state.currentUser,first_name: firstname}})}
-							/>
-						</Item>
-						<Item floatingLabel style={settings.field}>
-							<Label>Achternaam</Label>
-							<Input 
-							autoCorrect = {false}
-							autoCapitalize="none"
-							value = {this.state.currentUser.last_name}
-							onChangeText={(lastname)=> this.setState({currentUser: {...this.state.currentUser,last_name: lastname}})}
-							/>
-						</Item>
-						<Item floatingLabel style={settings.field}>
-							<Label>E-mail</Label>
-							<Input 
-							autoCorrect = {false}
-							autoCapitalize="none"
-							value = {this.state.currentUser.email}
-							onChangeText={(useremail)=> this.setState({currentUser: {...this.state.currentUser,email: useremail}})}
-							/>
-						</Item>
-						<Item floatingLabel style={settings.field}>
-							<Label>Wachtwoord</Label>
-							<Input 
-							secureTextEntry= {true}
-							autoCorrect = {false}
-							autoCapitalize="none"
-							onChangeText={(userpassword)=> this.setState({currentUser: {...this.state.currentUser,password: userpassword}})}
-							/>
-						</Item>
-						<Button style={settings.button}
-							full
-							rounded
-							primary
-							onPress={()=> this.updateProfile(this.state.currentUser.first_name,this.state.currentUser.last_name,this.state.currentUser.email,this.state.currentUser.password)}
-						>
-						<Text style={settings.buttonText}>Update</Text>
-						</Button>
-						<Button style={settings.button}
-							full
-							rounded
-							primary
-							onPress={()=> navigation.navigate('LoginScreen')}
-						>
-						<Text style={settings.buttonText}>Sign Out</Text>
-						</Button>
-					</Form>
+					<KeyboardAvoidingView behavior="padding">
+						<Form style={settings.container}>
+							<Image source={{ uri: this.state.currentUser.img }} style={settings.img} />
+							<Item floatingLabel style={settings.field}>
+								<Label>Voornaam</Label>
+								<Input 
+								autoCorrect = {false}
+								autoCapitalize="none"
+								value= {this.state.currentUser.first_name}
+								onChangeText={(firstname)=> this.setState({currentUser: {...this.state.currentUser,first_name: firstname}})}
+								/>
+							</Item>
+							<Item floatingLabel style={settings.field}>
+								<Label>Achternaam</Label>
+								<Input 
+								autoCorrect = {false}
+								autoCapitalize="none"
+								value = {this.state.currentUser.last_name}
+								onChangeText={(lastname)=> this.setState({currentUser: {...this.state.currentUser,last_name: lastname}})}
+								/>
+							</Item>
+							<Item floatingLabel style={settings.field}>
+								<Label>E-mail</Label>
+								<Input 
+								autoCorrect = {false}
+								autoCapitalize="none"
+								value = {this.state.currentUser.email}
+								onChangeText={(useremail)=> this.setState({currentUser: {...this.state.currentUser,email: useremail}})}
+								/>
+							</Item>
+							<Item floatingLabel style={settings.field}>
+								<Label>Wachtwoord</Label>
+								<Input 
+								secureTextEntry= {true}
+								autoCorrect = {false}
+								autoCapitalize="none"
+								onChangeText={(userpassword)=> this.setState({currentUser: {...this.state.currentUser,password: userpassword}})}
+								/>
+							</Item>
+							<Button style={settings.button}
+								full
+								rounded
+								primary
+								onPress={()=> this.updateProfile(this.state.currentUser.first_name,this.state.currentUser.last_name,this.state.currentUser.email,this.state.currentUser.password)}
+							>
+							<Text style={settings.buttonText}>Update</Text>
+							</Button>
+							<Button style={settings.button}
+								full
+								rounded
+								primary
+								onPress={()=> navigation.navigate('LoginScreen')}
+							>
+							<Text style={settings.buttonText}>Sign Out</Text>
+							</Button>
+						</Form>
+					</KeyboardAvoidingView>
 				</ScrollView>
 				<NavBar />
 			</View>
@@ -163,6 +165,14 @@ class SettingScreen extends React.Component {
 export default SettingScreen
 
 const settings = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: '#f5f5f5',
+		alignItems: 'center',
+		justifyContent: 'center',
+		height: "100%",
+		paddingTop:16
+	},
 	img: {
     height: 0,
     width: 80,
@@ -170,30 +180,6 @@ const settings = StyleSheet.create({
 		borderRadius: 80/2,
 		margin: 30,
 		position: 'relative'
-	},
-	textContainer: {
-		flex: 1,
-		width: 'auto',
-		height:139,
-	},
-	name: {
-		width: "100%",
-	  fontSize: 16,
-	  fontWeight: "bold",
-		fontStyle: "normal",
-		lineHeight: 19,
-		letterSpacing: 0,
-		textAlign: "left",
-		color: "#707070"
-	},
-	lvl: {
-		fontSize: 14,
-		fontWeight: "300",
-		fontStyle: "normal",
-		lineHeight: 17,
-		letterSpacing: 0,
-		textAlign: "left",
-		color: "#707070", 
 	},
 	button: {
 		backgroundColor: '#58BFA5',
@@ -206,6 +192,7 @@ const settings = StyleSheet.create({
 		color: '#FFF',	
 	},
 	field: {
-		margin: 30,
+		marginHorizontal: '10%',
+		marginVertical: 30,
 	},
 });    
