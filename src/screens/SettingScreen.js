@@ -153,6 +153,14 @@ class SettingScreen extends React.Component {
 						>
 						<Text style={settings.buttonText}>Update</Text>
 						</Button>
+						<Button style={settings.button}
+							full
+							rounded
+							primary
+							onPress={()=> navigation.navigate('LoginScreen')}
+						>
+						<Text style={settings.buttonText}>Sign Out</Text>
+						</Button>
 					</Form>
 				</ScrollView>
 				<NavBar />
