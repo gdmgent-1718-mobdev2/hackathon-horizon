@@ -21,7 +21,7 @@ class LeaderboardScreen extends React.Component {
 		this.ref = this.rootRef.child("badges");
 	}
 
-	listenForUsers(ref) {
+	listenForBadges(ref) {
 		ref.orderByChild('xp').on('value', (dataSnapshot) => {
 			let badges = [];
 			dataSnapshot.forEach((child) => {
@@ -42,7 +42,7 @@ class LeaderboardScreen extends React.Component {
 
 	componentDidMount() {
 		// start listening for firebase updates
-		this.listenForUsers(this.ref);
+		this.listenForBadges(this.ref);
 	}
 
 	render() {
