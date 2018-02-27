@@ -45,6 +45,8 @@ class ProfileScreen extends React.Component {
 				user.last_name = child.val().last_name;
 				user.xp = child.val().xp;
 				user.img = child.val().profile_picture;
+				//End ForEach after one loop
+				return true;
 			});
 			//Update placeholder state to data from DB
 			this.setState({
@@ -94,10 +96,10 @@ class ProfileScreen extends React.Component {
 					<View style={profile.textContainer}>
 						<Image source={{ uri: this.state.currentUser.img }} style={[profile.img]} />
 						<View style={{width: width - 188}}>
-							<Text style={profile.name}>{this.state.currentUser.first_name} {this.state.currentUser.last_name}</Text>
+							<Text style={profile.userName}>{this.state.currentUser.first_name} {this.state.currentUser.last_name}</Text>
 							<Text style={profile.lvl}>lvl {Math.floor(this.state.currentUser.xp / 100)}</Text>
-							<View style={{marginTop: 16,height: 8, backgroundColor: 'white', width: '100%'}}>
-								<View style={{height: 8, backgroundColor: '#5FBBA4', width:'50%'}}></View>
+							<View style={{borderRadius: 4, marginTop: 16, height: 8, backgroundColor: 'white', width: '100%'}}>
+								<View style={{borderRadius: 4, height: 8, backgroundColor: '#5FBBA4', width:'50%'}}></View>
 							</View>
 						</View>
 					</View>
@@ -147,8 +149,8 @@ const profile = StyleSheet.create({
 		paddingTop:-20
 	},
 	img: {
-    	height: 0,
-    	width: 80,
+    height: 0,
+    width: 80,
 		height: 80,
 		borderRadius: 80/2,
 		margin: 30,
@@ -176,19 +178,8 @@ const profile = StyleSheet.create({
 		height: 80,
 		backgroundColor: "white",
 		padding: 30,
-    },
-	btn: {
-		backgroundColor: "#5fbba4",
-		position: 'absolute',
-		top: 80,
-		left: 100,
-		width: 32,
-		height: 32,
-		textAlign: 'center',
-		paddingTop: 7,
-		color: 'white'
-	},
-	name: {
+  },
+	userName: {
   	width: "100%",
     fontSize: 16,
     fontWeight: "bold",
@@ -215,7 +206,8 @@ const profile = StyleSheet.create({
 		letterSpacing: 0,
 		textAlign: "left",
 		color: "#707070",
-	}, link: {
+	},
+	link: {
 		width: 100,
 		fontSize: 14,
 		fontWeight: "300",
@@ -238,7 +230,6 @@ const profile = StyleSheet.create({
 	},
 	name: {
 		fontWeight: 'normal',
-		marginLeft: 5,
 		paddingTop: 12,
 		width: 185,
 		height: 60,
@@ -249,12 +240,11 @@ const profile = StyleSheet.create({
 	},
 	xp: {
 		backgroundColor: '#48CFAD',
-		paddingTop: 10,
-		paddingVertical: 10,
+		paddingVertical: 5,
 		paddingHorizontal: 10,
 		borderRadius: 20,
 		color: '#FFF',
 		fontSize: 11,
 	},
-});  
+});
 

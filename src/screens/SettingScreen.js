@@ -98,16 +98,7 @@ class SettingScreen extends React.Component {
 		return (
 			<View style={{ flex: 1 }}>
 				<ScrollView style={{ height: height - 48 }}>
-					<View style={settings.textContainer}>
-						<Image source={{ uri: this.state.currentUser.img }} style={[settings.img]} />
-						<View style={{width: width - 188}}>
-							<Text style={settings.name}>{this.state.currentUser.first_name} {this.state.currentUser.last_name}</Text>
-							<Text style={settings.lvl}>lvl {Math.floor(this.state.currentUser.xp / 100)}</Text>
-							<View style={{marginTop: 16,height: 8, backgroundColor: 'white', width: '100%'}}>
-								<View style={{height: 8, backgroundColor: '#5FBBA4', width:'50%'}}></View>
-							</View>
-						</View>
-					</View>
+					
 					<Form>
 						<Item floatingLabel style={settings.field}>
 							<Label>Voornaam</Label>
@@ -173,8 +164,8 @@ export default SettingScreen
 
 const settings = StyleSheet.create({
 	img: {
-    	height: 0,
-    	width: 80,
+    height: 0,
+    width: 80,
 		height: 80,
 		borderRadius: 80/2,
 		margin: 30,
@@ -187,8 +178,8 @@ const settings = StyleSheet.create({
 	},
 	name: {
 		width: "100%",
-	  	fontSize: 16,
-	  	fontWeight: "bold",
+	  fontSize: 16,
+	  fontWeight: "bold",
 		fontStyle: "normal",
 		lineHeight: 19,
 		letterSpacing: 0,
