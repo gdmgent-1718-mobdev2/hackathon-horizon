@@ -17,7 +17,9 @@ export default class App extends React.Component {
       email:'',
       password:''
     })
-    
+    console.ignoredYellowBox = [
+			'Setting a timer'
+		]
   }
 
   render() {

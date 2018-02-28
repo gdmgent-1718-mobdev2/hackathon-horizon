@@ -37,7 +37,7 @@ class LandingScreen extends React.Component {
 				});
 			});
 			this.setState({
-				dataSource: this.state.dataSource.cloneWithRows(parks.reverse()),
+				dataSource: this.state.dataSource.cloneWithRows(parks),
 			});
 		});
 	}
